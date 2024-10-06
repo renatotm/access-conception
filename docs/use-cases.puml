@@ -1,0 +1,26 @@
+@startuml "use-cases"
+left to right direction
+
+actor Operator as o
+actor Admin as a
+
+package Access {
+    usecase "Register person" as UC1
+    usecase "Register vehicle" as UC2
+    usecase "Create access" as UC3
+    usecase "Give permission" as UC4
+    usecase "Create users" as UC5
+    usecase "Create basic registers" as UC6
+    usecase "Search access" as UC7
+}
+
+o <|-right- a
+o --> UC1
+o --> UC2
+o --> UC3
+o --> UC4
+o --> UC7
+a --> UC5
+a --> UC6
+(UC3)...>(UC1) : <<includes>>
+@enduml

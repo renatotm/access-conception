@@ -18,3 +18,7 @@ Uma empresa necessita fazer o controle de entradas e saídas de funcionários, p
 # Restrições de cadastro
 - Apenas um cadastro por CPF.
 - Apenas um cadastro por placa de veículo.
+
+# Diagramas
+## Use Cases
+![Use Cases](/out/docs/use-cases/use-cases.png)
