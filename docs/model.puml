@@ -1,0 +1,113 @@
+@startuml "Model"
+
+    class Pessoa {
+        id: Long 
+        dataHoraRegistro:	String
+        cpf:	String
+        cpfUsuarioCadastro:	String
+        estrangeiro: String 
+        documentoEstrangeiroNumero: String
+        documentoEstrangeiroTipo: String
+        documentoEstrangeiroPaisEmissor: String
+        paisNacionalidade:	String
+        sexo:	String
+        cnh:	String
+        nome:	String
+        dataNascimento:	String
+        fone:	String
+        cnpjRepresentado:	String
+        cpfRepresentado:	String
+        operadorEstrangeiroRepresentado:	String
+        documentoEstrangeiroRepresentado: String
+        paisEmissorDocumentoEstrangeiroRepresentado:	String
+        tipoDocumentoEstrangeiroRepresentado:	String
+        validadeDocumentoEstrangeiroRepresentado:	String
+        nomeRepresentado:	String
+        qualificacao:	String
+        Qualificação: TipoPessoa
+        funcao:	String
+        dataInicioValidade:	String
+        dataFimValidade:	String
+        horaPrevistaEntrada:	String
+        horaPrevistaSaida:	String
+        areas:	String
+        materiaisFerramentas:	String
+        credenciamentoAtivo:	String
+        motivacao:	String
+    }
+
+    class TipoPessoa {
+        id: Long
+        descricao: String
+    }
+
+    class Veiculo {
+        id: Long
+        modelo: String
+        tipo: TipoVeiculo
+        marca: MarcaVeiculo
+        cor: String
+    }
+
+    class TipoVeiculo {
+        id: Long
+        nome: String        
+    }
+
+    class MarcaVeiculo {
+        id: Long
+        nome: String
+    }    
+
+    class Equipamento {
+        id: Long
+        nome: String
+        modelo: String
+        tipo: String
+        ip: String        
+    }    
+
+    class Acesso {
+        id: Long   
+        dataHoraEntrada:  Timestamp  
+        dataHoraSaida:  Timestamp
+        pessoa: Pessoa
+        veiculo: Veiculo
+        cpfOperador:	String
+        direcao: String
+        identificacao:	String 
+        catraca:	String
+    }
+
+    class Liberacao {
+        id: Long
+        pessoa: Pessoa
+        equipamento Equipamento
+        liberado: string
+    }    
+
+    class Usuario {
+        id: Long
+        nome: String
+        email: String
+        senha: String
+        ativo: String 
+    }  
+
+    class Permissao {
+        id: Long
+        nome: String
+    }        
+
+    TipoPessoa "0..*" --o "1" Pessoa
+
+    Pessoa "0..*" *-- "0..*" Acesso
+    Veiculo *-- "0..*" Acesso
+
+    Usuario "0..*" --- "0..*" Permissao
+
+    TipoVeiculo "0..*" --o "0..1" Veiculo
+    MarcaVeiculo "0..*" --o "0..1" Veiculo
+    Liberacao "0..*" --- "0..*" Pessoa
+    Liberacao "0..*" --- "0..1" Equipamento
+@enduml

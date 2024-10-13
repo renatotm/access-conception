@@ -22,3 +22,6 @@ Uma empresa necessita fazer o controle de entradas e saídas de funcionários, p
 # Diagramas
 ## Use Cases
 ![Use Cases](/out/docs/use-cases/use-cases.png)
+
+## Model
+![Model](/out/docs/model/model.png)
